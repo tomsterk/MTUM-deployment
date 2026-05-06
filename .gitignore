@@ -1,0 +1,8 @@
+Data/
+Deployement_dataset/
+# Junk
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+catboost_info/
+gitignore.txt
