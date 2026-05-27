@@ -1,7 +1,7 @@
 # MTUM Phase 2 Deployment
 
 Production deployment of the Multi-Treatment Uplift Model (MTUM) for customer win-back targeting. This folder contains everything needed to (re)train the CatBoost model and score a deployment cohort to produce the customer-level incentive assignment file used by the CRM team.
-
+```
 ---
 
 ## Project Structure
