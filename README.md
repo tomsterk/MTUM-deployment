@@ -1,7 +1,7 @@
 # MTUM Phase 2 Deployment
 
 Production deployment of the Multi-Treatment Uplift Model (MTUM) for customer win-back targeting. This folder contains everything needed to (re)train the CatBoost model and score a deployment cohort to produce the customer-level incentive assignment file used by the CRM team.
-```
+
 ---
 
 ## Project Structure
@@ -9,27 +9,26 @@ Production deployment of the Multi-Treatment Uplift Model (MTUM) for customer wi
 ```
 Thesis code/
 │
-├── Queries Metabase/
-│   SQL queries used to generate the customer datasets from the data warehouse
-│   ├── Pretreatment covariates.sql              # Training covariates query
-│   └── Pretreatment covariates deployement.sql  # Deployment covariates query
+├── Queries Metabase/                                      # SQL queries used to generate customer datasets
+│   ├── Pretreatment covariates.sql                        # Training covariates query
+│   └── Pretreatment covariates deployement.sql            # Deployment covariates query
 │
 ├── Data/
 │   ├── covariates_modeling_uplift_models_2026-03-13.csv   # Training data (output of Pretreatment covariates.sql)
 │   └── covariates_deployment_dataset_2026-03-17.csv       # Deployment data (output of Pretreatment covariates deployement.sql)
 │
 ├── Models/
-│   └── mtum_phase_2_catboost.cbm      # Trained CatBoost model (produced by mtum_train.py)
+│   └── mtum_phase_2_catboost.cbm                          # Trained CatBoost model (produced by mtum_train.py)
 │
 ├── Deployement_dataset/
-│   └── treatment_selected_multi_2.csv # Customer-level incentive assignments (produced by mtum_score.py)
+│   └── treatment_selected_multi_2.csv                     # Customer-level incentive assignments (produced by mtum_score.py)
 │
-├── catboost_info/                     # CatBoost training logs (auto-generated)
+├── catboost_info/                                         # CatBoost training logs (auto-generated)
 │
-├── mtum_config.py                     # Shared config and data-prep helpers
-├── mtum_train.py                      # Trains and saves the CatBoost model
-├── mtum_score.py                      # Scores deployment cohort, writes assignments
-├── MTUM run script.ipynb              # Notebook to launch train + score from Jupyter
+├── mtum_config.py                                         # Shared config and data-prep helpers
+├── mtum_train.py                                          # Trains and saves the CatBoost model
+├── mtum_score.py                                          # Scores deployment cohort, writes assignments
+├── MTUM run script.ipynb                                  # Notebook to launch train + score from Jupyter
 └── README.md
 ```
 
@@ -53,6 +52,8 @@ Models/mtum_phase_2_catboost.cbm                     │
                             │
                             ▼
               Deployement_dataset/treatment_selected_multi_2.csv
+```
+
 ---
 
 ## Scripts
