@@ -1,9 +1,6 @@
 """
 Shared config and data-prep helpers for the MTUM Phase 2 train/score scripts.
 
-Constants and helpers that BOTH training and scoring need live here.
-Train-only logic (CatBoost fit) and score-only logic (uplift) live in
-mtum_train.py and mtum_score.py respectively.
 """
 
 from __future__ import annotations
@@ -17,14 +14,14 @@ import pandas as pd
 
 # ── Paths ──────────────────────────────────────────────────────────────────
 TRAINING_DATA_PATH = Path("Data/covariates_modeling_uplift_models_2026-03-13.csv")
-DEPLOYMENT_DATA_PATH = Path("Data/covariates_deployment_dataset_2026-03-17.csv")
+DEPLOYMENT_DATA_PATH = Path("Data/covariates_deployment_dataset_2026-05-16.csv")
 
 MODEL_OUTPUT_PATH = Path("Models/mtum_phase_2_catboost.cbm")
-TREATMENT_OUTPUT_PATH = Path("Deployement_dataset/treatment_selected_multi_2.csv")
+TREATMENT_OUTPUT_PATH = Path("Deployement_dataset/deployement")
 
 
 # ── Run params ─────────────────────────────────────────────────────────────
-TOP_PCT = .50  # fraction of scored cohort to write out (1.00 = everyone)
+TOP_PCT = 0.5  # fraction of scored cohort to write out (1.00 = everyone)
 RANDOM_SEED = 42
 
 

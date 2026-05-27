@@ -9,6 +9,7 @@ Run:
     python mtum_score.py
 """
 
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -195,9 +196,10 @@ def select_top_pct(df: pd.DataFrame, top_pct: float) -> pd.DataFrame:
 
 
 def write_assignments(df: pd.DataFrame, path: Path) -> None:
-    """Write the customer_nk + optimal incentive CSV for ops handoff."""
+    """Write customer_nk + assigned optimal incentive only."""
     path.parent.mkdir(parents=True, exist_ok=True)
-    df[["customer_nk", "original_incentive_name"]].to_csv(path, index=False)
+    df_out = df[["customer_nk", "original_incentive_name"]]
+    df_out.to_csv(path, index=False, sep=";")
     print(f"Assignment rows: {len(df)} -> {path}")
 
 
@@ -230,6 +232,11 @@ def main() -> None:
     df_predictions = score_deployment(model, X_deploy)
 
     df_preds_uplift = attach_uplifts_and_optimal_treatment(df_predictions, treatment_probs)
+
+    uplift_cols = [f"uplift_{k}" for k in K_VALUES if f"uplift_{k}" in df_preds_uplift.columns]
+    proba_cols = [c for c in df_preds_uplift.columns if c.startswith("p_")]
+    for col in uplift_cols + proba_cols:
+        df_deployment[col] = df_preds_uplift[col].values
 
     df_deployment["optimal_treatment"] = df_preds_uplift["optimal_treatment"].values
     df_deployment["optimal_lift"] = df_preds_uplift["optimal_lift"].values

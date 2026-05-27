@@ -40,7 +40,7 @@ def train_catboost(X: pd.DataFrame, y: pd.Series) -> CatBoostClassifier:
 
     model = CatBoostClassifier(
         verbose=100,
-        n_estimators = 500,
+        #n_estimators = 500,
         random_seed=RANDOM_SEED,
         class_names=list(class_labels),
         class_weights=class_weights,
