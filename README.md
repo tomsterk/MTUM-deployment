@@ -96,16 +96,6 @@ import sys
 !"{sys.executable}" mtum_score.py
 ```
 
-### From Anaconda Prompt
-```
-conda activate causalml_py312
-cd "C:\Users\<you>\OneDrive - Holland & Barrett\MTUM deployement\Thesis code"
-python mtum_train.py
-python mtum_score.py
-```
-
-Once the model is trained, only `mtum_score.py` needs to be re-run for a refreshed deployment cohort.
-
 ---
 
 ## Configuration
