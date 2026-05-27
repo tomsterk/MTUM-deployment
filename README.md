@@ -53,10 +53,6 @@ Models/mtum_phase_2_catboost.cbm                     │
                             │
                             ▼
               Deployement_dataset/treatment_selected_multi_2.csv
-```
-
-The training step is run once per refresh of the training data; the scoring step is re-run any time a new deployment cohort is pulled.
-
 ---
 
 ## Scripts
@@ -65,7 +61,6 @@ The training step is run once per refresh of the training data; the scoring step
 Shared module — not run directly. Holds:
 - File paths for inputs (training/deployment CSVs) and outputs (model, assignment CSV)
 - `TOP_PCT` (fraction of scored cohort to write out; `1.0` = everyone)
-- `RANDOM_SEED`
 - Treatment encoding (which incentive arms to drop, integer mapping for `treatment_indicator`, mapping back to original incentive filenames)
 - Feature schema (categorical columns, numeric columns, target column name)
 - Data-prep helpers used by both training and scoring (`coerce_metrics_to_numeric`, `cast_dtypes`, `prepare_features`, `build_multi_outcome_target`, `get_treatment_probs_from_y_true`, etc.)
