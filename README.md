@@ -6,7 +6,7 @@ Production deployment of the Multi-Treatment Uplift Model (MTUM) for customer wi
 
 ## Uplift score calculation per incentive (MMOA)
 
-For each customer–incentive pair, the CatBoost MultiClass model predicts four joint probabilities — one per (treatment, outcome) cell. Example for customer **C-12345** and the €5 voucher arm:
+For each customer–incentive pair, the CatBoost MultiClass model predicts four joint probabilities — one per (treatment, outcome) cell. Example for  customer with the €5 voucher arm:
 
 | Cell                          | Probability |
 |-------------------------------|-------------|
@@ -15,15 +15,15 @@ For each customer–incentive pair, the CatBoost MultiClass model predicts four 
 | control, reactivated          | 3%          |
 | control, not reactivated      | 47%         |
 
-Under the Modified Outcome Approach (MMOA), two cells count as evidence the voucher *helps* and two count as evidence it doesn't:
+Under the Modified Outcome Approach (MMOA), the problem of uplift estimation is translated to estimating the probability of treatment/control and reactivated/not reactivated. Two outcomes are considered as positive, and two as negative:
 
-- **Wins:** treatment + reactivated  •  control + not reactivated
-- **Losses:** treatment + not reactivated  •  control + reactivated
+- **Positive:** treatment + reactivated  and  control + not reactivated
+- **Negative:** treatment + not reactivated  and  control + reactivated
 
-The uplift score is wins − losses:
+The uplift score is Poitive − negative:
 
 ```
-score_5eu(C-12345) = (5% + 47%) − (45% + 3%)
+uplift_5eu    = (5% + 47%) − (45% + 3%)
                    =  52%       −  48%
                    = +4 pp
 ```
