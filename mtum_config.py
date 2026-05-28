@@ -136,6 +136,7 @@ def get_treatment_probs_from_y_true(
     y_true_col: str = "y_true",
 ) -> Dict[int, float]:
     """
+    This is computing the empirical marginal treatment distribution, P(T=t) — i.e. what fraction of your sample landed in each arm.
     Compute P(T=t) using only the last digit of y_true (e.g., 'reactivated_3' -> 3).
     Returns a dict like {0: 0.52, 1: 0.11, ...}.
     """
